@@ -1,0 +1,28 @@
+//SOIL MOISTURE SENSOR CONNECTED TO ARDUINO
+//At the time we start writing the code, we define 3 variables :
+
+int sensorPin = A0; 
+// The first one defines the analog pin of the Arduino
+
+int sensorValue;  
+//The second defines the analog value of the sensor read by the Arduino
+
+int limit = 300; 
+/*The third defines a limit ( in this case if the sensorValue is larger than the limit, then a LED will light up )
+----------------------------------------------------------------------------------------------------------------*/
+void setup() {
+Serial.begin(9600);
+pinMode(13, OUTPUT);
+}
+void loop() {  
+sensorValue = analogRead(sensorPin); 
+Serial.println("Analog Value : ");
+Serial.println(sensorValue);
+if (sensorValue<limit) {
+digitalWrite(13, HIGH); 
+}
+else {
+digitalWrite(13, LOW);
+ }
+delay(1000); 
+}
